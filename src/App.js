@@ -1,24 +1,15 @@
-import logo from './logo.svg';
-import './App.css';
+// import React from 'react';
+import NoteCard from './components/noteCard';
 
-function App() {
+const App = () => {
+
+  const cards = [
+    {title: "Note 1", content: "This is a note"},
+    {title: "Note 2", content: "This is another note"}
+  ];
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    NoteCard(cards[0])
   );
 }
 

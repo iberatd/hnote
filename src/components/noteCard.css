@@ -1,0 +1,28 @@
+.modeButtons {
+    background-color: #777777; /* Replace with your desired color */
+    color: #ffffff; /* Replace with your desired color */
+    margin-left: 2px;
+    border-radius: 10px;
+    border: 1px solid #000000; /* Replace with your desired color */
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.Draggable, .Resizable {
+    padding: 0 !important;
+    margin: 0 !important;
+    border: 0 !important;
+  }
+
+.bar {
+    display: flex; 
+    justify-content: flex-end; 
+    cursor: move; 
+    background-color: #000000; /* Replace with your desired color */
+    flex-direction: row; /* Add this line to make it horizontal */
+    width: 100%;
+}
