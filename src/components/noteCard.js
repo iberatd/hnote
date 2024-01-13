@@ -7,7 +7,7 @@ import "./noteCard.css";
 const NoteCard = (cardData) => {
     const [showDetails, setShowDetails] = useState(false);
     const [cardWidth, setCardWidth] = useState(200);
-    const [cardHeight, setCardHeight] = useState(200);
+    const [cardHeight, setCardHeight] = useState(100);
 
     
     const  cardStyle = {
@@ -24,10 +24,19 @@ const NoteCard = (cardData) => {
 
     const toggleDetails = () => {
         setShowDetails(!showDetails);
+        if(!showDetails){
+            setCardWidth(cardData.cardData.width);
+            setCardHeight(cardData.cardData.height);
+        }else
+        {
+            setCardWidth(200);
+            setCardHeight(100);
+        }
     };
 
     const deleteCard = () => {
         console.log("delete card");
+        console.log(cardData);
     }
 
     const editCard = () => {
@@ -35,13 +44,16 @@ const NoteCard = (cardData) => {
     }
 
     const resizeCard = (event, { size }) => {
-        console.log("saljdfbnkasjdba");
         setCardWidth(size.width);
         setCardHeight(size.height);
+        if(showDetails){
+            cardData.cardData.width = size.width;
+            cardData.cardData.height = size.height;
+        }
     }
 
     return (
-        <Draggable handle='.bar' className = "Draggable">
+        <Draggable handle='.bar'>
             <Resizable 
                 className = "Resizable"
                 width={cardWidth} 
@@ -52,14 +64,15 @@ const NoteCard = (cardData) => {
 
                     <div className="bar" >
                         <button className = "modeButtons" onClick={toggleDetails}>-</button>
-                        <button className = "modeButtons" onClick={deleteCard}>x</button>
                         <button className = "modeButtons" onClick={editCard}>+</button>
+                        <button className = "modeButtons" onClick={deleteCard}>x</button>
                     </div>
 
-                    <h1>{cardData.title}</h1>
+                    <h1>{cardData.cardData.title}</h1>
                     {showDetails && (
                         <div>
-                            <p>{cardData.content}</p>
+                            <h2>Details</h2>
+                            <p>{cardData.cardData.content}</p>
                         </div>
                     )}
                 </div>
